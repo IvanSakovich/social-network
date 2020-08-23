@@ -20,7 +20,7 @@ const MyPosts = () =>{
         <textarea></textarea>
         </div>
         <div>
-        <button>Add Post</button>
+        <button>Add Postfff</button>
       </div>
       <div>New Post</div>
       {postsElements}
