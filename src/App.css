@@ -7,7 +7,8 @@
   grid-gap: 10px;
   grid-template-areas: 
   "h h"
-  "n c";
+  "n c"
+  "f f";
 }
 
 .content{
