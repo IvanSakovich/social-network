@@ -5,21 +5,19 @@ import Navbar from './components/Navbar/Navbar';
 import Content from './components/Content/Content';
 import Dialogs from './components/Dialogs/Dialogs';
 import Footer from './components/Footer/Footer';
-import {Route, BrowserRouter} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 
 const App = (props) =>{
   return (
-    <BrowserRouter>
     <div className="app-wrapper">
       <Header />
       <Navbar />
       <div className='app-content'>
-        <Route path='/content' component={ () => <Content/>}/>
-        <Route path='/dialogs' component={ () => <Dialogs/>}/>
+        <Route path='/content' component={ () => <Content store={props.store.contentPage} addPost={props.addPost}/>}/>
+        <Route path='/dialogs' component={ () => <Dialogs store={props.store.dialogsPage}/>}/>
       </div>
       <Footer />
     </div>
-    </BrowserRouter>
   );
 }
  

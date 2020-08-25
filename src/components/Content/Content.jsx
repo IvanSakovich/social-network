@@ -3,11 +3,11 @@ import './../../App.css';
 import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Content = () =>{
+const Content = (props) =>{
   return (
     <div>
       <ProfileInfo />
-      <MyPosts />
+      <MyPosts postsData={props.store.postsData} addPost = {props.addPost}/>
     </div>
   );
 }

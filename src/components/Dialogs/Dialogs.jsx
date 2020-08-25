@@ -3,25 +3,20 @@ import s from './Dialogs.module.css';
 import Message from './Message/Message';
 import DI from './DI/DI';
 
-let dialogsData = [
-    {id: 1, name: 'Ivan'},
-    {id: 2, name: 'Alex'},
-    {id: 3, name: 'Yury'}
-]
-
-let dialogsElements = dialogsData
+const Dialogs = (props) => {
+    
+let dialogsElements = props.store.dialogsData
 .map( d => <DI name={d.name} id={d.id}/> );
 
-let messagesData = [
-    {id: 1, message: '1'},
-    {id: 2, message: '2'},
-    {id: 3, message: '3'}
-]
+let messagesElements = props.store.messagesData
+.map( m => <Message id={m.id} message={m.message}/>)
 
-let messagesElements = messagesData.
-map( m => <Message id={m.id} message={m.message}/>)
+let newDialogMessage = React.createRef();
 
-const Dialogs = (props) => {
+let addMessage = () => {
+    let textDialogs = newDialogMessage.current.value;
+    alert(textDialogs);
+}
     return (
         <div className={s.dialogs}>
             <div className={s.dialogItems}>
@@ -29,6 +24,10 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 {messagesElements}
+            </div>
+            <div>
+                <textarea ref={newDialogMessage}></textarea>
+                <button onClick={addMessage}>add message</button>
             </div>
         </div>
     )
