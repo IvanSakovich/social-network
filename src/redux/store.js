@@ -1,3 +1,6 @@
+let rerenderET = () => {
+  console.log('state was changed')
+}
 
 let store = {
   contentPage : {
@@ -5,7 +8,8 @@ let store = {
       {id: 1, message: 'aaa', likescount: '22'},
       {id: 2, message: 'bbb', likescount: '12'},
       {id: 3, message: 'ccc', likescount: '23'}
-    ]
+    ],
+    newPostText : ''
   },
   dialogsPage : {
     dialogsData : [
@@ -22,16 +26,24 @@ let store = {
   }
   }
 
-  export let addPost = (postMessage) => {
+  export const addPost = (postMessage) => {
     let newPost = {
       id: 5,
       message: postMessage,
       likescount: 44
     };
     store.contentPage.postsData.push(newPost);
-    //rerenderET();
+    store.contentPage.newPostText = '';
+    rerenderET(store);
   }
 
- 
+  export const updateNewPostText = (newText) => {
+    store.contentPage.newPostText = newText;
+    rerenderET(store);
+  }
+
+  export const subscribe = (observer) => {
+    rerenderET = observer;
+  }
 
   export default store;

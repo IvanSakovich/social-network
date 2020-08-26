@@ -3,21 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import store from './redux/store';
+import store, { subscribe } from './redux/store';
 import {BrowserRouter} from 'react-router-dom';
-import {addPost} from './redux/store';
+import {addPost, updateNewPostText} from './redux/store';
 
-//export let rerenderET = () => {
+
+let rerenderET = (props) => {
   ReactDOM.render( 
     <BrowserRouter>
     <React.StrictMode>
-      <App store={store} addPost={addPost}/>
+      <App store={store} addPost={addPost} updateNewPostText={updateNewPostText}/>
     </React.StrictMode>
     </BrowserRouter>,
     document.getElementById('root')
   );
-//}
-//rerenderET();
+}
+
+rerenderET(store);
+
+subscribe(rerenderET);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

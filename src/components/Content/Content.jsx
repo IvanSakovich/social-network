@@ -7,7 +7,9 @@ const Content = (props) =>{
   return (
     <div>
       <ProfileInfo />
-      <MyPosts postsData={props.store.postsData} addPost = {props.addPost}/>
+      <MyPosts newPostText={props.store.newPostText} 
+      postsData={props.store.postsData} addPost = {props.addPost}
+      updateNewPostText={props.updateNewPostText}/>
     </div>
   );
 }
