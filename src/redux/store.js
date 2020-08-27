@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
 let store = {
   _state : {
     contentPage : {
@@ -32,7 +35,7 @@ let store = {
       this._rerenderET = observer;
     },
     dispatch (action) {
-      if (action.type === 'ADD-POST'){
+      if (action.type === ADD_POST){
         let newPost = {
           id: 5,
           message: this._state.contentPage.newPostText, // postMessage
@@ -41,11 +44,23 @@ let store = {
         this._state.contentPage.postsData.push(newPost);
         this._state.contentPage.newPostText = '';
         this._rerenderET(this._state);
-      } else if (action.type === 'UPDATE-NEW-POST-TEXT'){
+      } else if (action.type === UPDATE_NEW_POST_TEXT){
         this._state.contentPage.newPostText = action.newText;
         this._rerenderET(this._state );
       }
     }
+}
+
+export const addPostAC = () => {
+  return {
+    type : 'ADD_POST'
+  }
+}
+
+export const updateNewPostTextAC = (text) => {
+  return {
+    type : 'UPDATE_NEW_POST_TEXT', newText: text
+  }
 }
 
   export default store;
