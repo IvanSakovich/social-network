@@ -13,8 +13,14 @@ const App = (props) =>{
       <Header />
       <Navbar />
       <div className='app-content'>
-        <Route path='/content' component={ () => <Content store={props.store.contentPage} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>}/>
-        <Route path='/dialogs' component={ () => <Dialogs store={props.store.dialogsPage}/>}/>
+        <Route path='/content' component={ () => 
+        <Content 
+        store={props.state.contentPage} 
+        addPost={props.addPost}
+        updateNewPostText={props.updateNewPostText}/>}/>
+        <Route path='/dialogs' component={ () => 
+        <Dialogs 
+        store={props.state.dialogsPage}/>}/>
       </div>
       <Footer />
     </div>
