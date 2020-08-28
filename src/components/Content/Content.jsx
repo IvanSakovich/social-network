@@ -8,8 +8,10 @@ const Content = (props) =>{
   return (
     <div>
       <ProfileInfo />
-      <MyPosts newPostText={props.store.newPostText} 
-      postsData={props.store.postsData} dispatch={props.dispatch}/>
+      <MyPosts
+       newPostText={props.store.newPostText} 
+       postsData={props.store.postsData} dispatch={props.dispatch}
+      />
     </div>
   );
 }

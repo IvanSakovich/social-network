@@ -16,11 +16,14 @@ const App = (props) =>{
         <Route path='/content' component={ () => 
         <Content 
         dispatch={props.dispatch}
-        store={props.state.contentPage} />}/>
+        store={props.state.contentPage} 
+        />}/>
         <Route path='/dialogs' component={ () => 
         <Dialogs 
-        store={props.state.dialogsPage}
-        dispatch={props.dispatch}/>}/>
+        store={props.store}
+        //store={props.state.dialogsPage}
+        //dispatch={props.dispatch}
+        />}/>
       </div>
       <Footer />
     </div>
