@@ -1,3 +1,6 @@
+import contentReducer from './contentReducer';
+import dialogsReducer from './dialogsReducer';
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
@@ -37,29 +40,10 @@ messagesData : [
     subscribe (observer) {
       this._rerenderET = observer;
     },
-    dispatch (action) {
-      console.log(action)
-      if (action.type === ADD_POST){
-        let newPost = {
-          id: 5,
-          message: this._state.contentPage.newPostText, // postMessage
-          likescount: 44
-        };
-        this._state.contentPage.postsData.push(newPost);
-        this._state.contentPage.newPostText = '';
-        this._rerenderET(this._state);
-      } else if (action.type === UPDATE_NEW_POST_TEXT){
-        this._state.contentPage.newPostText = action.newText;
-        this._rerenderET(this._state );
-      } else if (action.type === UPDATE_NEW_MESSAGE_BODY){
-        
-        this._state.dialogsPage.newMessageBody = action.body; 
-        this._rerenderET(this._state );
-      } else if (action.type === SEND_MESSAGE){
-        let body = this._state.dialogsPage.newMessageBody;
-        this._state.dialogsPage.newMessageBody = '';
-        this._state.dialogsPage.messagesData.push({id: 7, message: body});
-        this._rerenderET(this._state );}
+    dispatch (action)  {
+      this._state.contentPage = contentReducer(this._state.contentPage, action);
+      this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+      this._rerenderET(this._state );
     }
 }
 
