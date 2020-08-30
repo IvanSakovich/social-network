@@ -13,7 +13,7 @@ const MyPosts = (props) =>{
 
   let addPost = () => {
     props.dispatch(addPostAC());
-   // props.addPost();
+    //props.addPost();
   //  let text = newPostElement.current.value;
   // newPostElement.current.value = '';
   }

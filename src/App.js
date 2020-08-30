@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer';
 import {Route} from 'react-router-dom';
 
 const App = (props) =>{
+  
   return (
     <div className="app-wrapper">
       <Header />
@@ -15,8 +16,9 @@ const App = (props) =>{
       <div className='app-content'>
         <Route path='/content' component={ () => 
         <Content 
-        dispatch={props.dispatch}
-        store={props.state.contentPage} 
+        dispatch={props.store.dispatch}
+        contentReducer={props.store.getState().contentReducer} 
+       //store={props.store}
         />}/>
         <Route path='/dialogs' component={ () => 
         <Dialogs 

@@ -28,7 +28,6 @@ messagesData : [
         {id: 3, message: '3'}
       ],
       newMessageBody : 'sss'
-
     }
     },
     getState() {

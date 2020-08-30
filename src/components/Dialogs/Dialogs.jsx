@@ -6,8 +6,8 @@ import {updateNewMessageBodyAC, sendMessageAC} from './../../redux/store';
 
 const Dialogs = (props) => {
 
-let state = props.store.getState().dialogsPage;
-    
+let state = props.store.getState().dialogsReducer;
+
 let dialogsElements = state.dialogsData
 .map( d => <DI name={d.name} id={d.id}/> );
 
