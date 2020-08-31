@@ -2,25 +2,38 @@ import React from 'react';
 import './../../../App.css';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
+import {addPostAC, updateNewPostTextAC}from './../../../redux/store';
 
-let postsData = [
-  {id: 1, message: 'aaa', likescount: '22'},
-  {id: 2, message: 'bbb', likescount: '12'},
-  {id: 3, message: 'ccc', likescount: '23'}
-]
-   
-let postsElements = postsData
+const MyPosts = (props) =>{
+  
+  let postsElements = props.postsData
 .map( p => <Post id={p.id} message={p.message} likescount={p.likescount}/>)
 
-const MyPosts = () =>{
+  let newPostElement = React.createRef();
+
+  let addPost = () => {
+    props.dispatch(addPostAC());
+    //props.addPost();
+  //  let text = newPostElement.current.value;
+  // newPostElement.current.value = '';
+  }
+
+  let onPostChange = () => {
+      let text = newPostElement.current.value;
+    props.dispatch(updateNewPostTextAC(text));
+  //  props.updateNewPostText(text);
+  //  newPostElement.current.value = '';
+  }
+
   return (
     <div className={s.content}>
       <h3>My Posts</h3>
       <div>
-        <textarea></textarea>
+        <textarea ref={newPostElement}onChange={onPostChange} 
+        value={props.newPostText}></textarea>
         </div>
         <div>
-        <button>Add Post</button>
+        <button onClick={addPost}>Add Post</button>
       </div>
       <div>New Post</div>
       {postsElements}
