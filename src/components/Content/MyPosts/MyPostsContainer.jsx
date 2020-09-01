@@ -1,27 +1,25 @@
-import React from 'react';
+//import React from 'react';
 import './../../../App.css';
 import MyPosts from './MyPosts';
-import {addPostAC, updateNewPostTextAC}from '../../../redux/store';
+import {addPostAC, updateNewPostTextAC} from '../../../redux/store';
+import {connect} from 'react-redux'; 
 
-const MyPostsContainer = (props) =>{
+let mapStateToProps = (state) =>{console.log(state)
+  return {
+    postsData: state.contentReducer.postsData,
 
-  let addPost = () => {
-    props.dispatch(addPostAC());
-    //props.addPost();
-  //  let text = newPostElement.current.value;
-  // newPostElement.current.value = '';
   }
-
-  let onPostChange = (text) => {
-    //let text = newPostElement.current.value;
-    props.dispatch(updateNewPostTextAC(text));
-  //  props.updateNewPostText(text);
-  //  newPostElement.current.value = '';
-  }
-
-  return (
-    <MyPosts updateNewPostText={onPostChange} addPost={addPost} postsData={props.postsData}/>
-  );
 }
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    addPost: () => {dispatch(addPostAC())},
+    updateNewPostText: (text) => {
+    dispatch(updateNewPostTextAC(text))
+    }
+  }
+}
+
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
 export default MyPostsContainer;

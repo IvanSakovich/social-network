@@ -2,10 +2,10 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Message from './Message/Message';
 import DI from './DI/DI';
-import {updateNewMessageBodyAC, sendMessageAC} from './../../redux/store';
+//import {updateNewMessageBodyAC, sendMessageAC} from './../../redux/store';
 
 const Dialogs = (props) => {
-console.log(props)
+
 //let state = props.store.getState().dialogsReducer;
 
 let dialogsElements = props.dialogsReducer.dialogsData
@@ -21,6 +21,7 @@ let newDialogMessage = React.createRef();
 let onSendMessageClick = () => {
     //props.store.dispatch(sendMessageAC());
     props.sendMessage();
+    //store.dispatch(sendMessageAC())
 }
 
 let onNewMessageChange = (e) => {
