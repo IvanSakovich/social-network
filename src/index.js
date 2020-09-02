@@ -23,13 +23,13 @@ let rerenderET = (props) => {
     document.getElementById('root')
   );
 }
+rerenderET();
+//rerenderET(store.getState());
 
-rerenderET(store.getState());
-
-store.subscribe(() => {
-  let state = store.getState();
-  rerenderET(state);
-}); 
+//store.subscribe(() => {
+//  let state = store.getState();
+//  rerenderET(state);
+//}); 
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

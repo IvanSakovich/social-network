@@ -4,10 +4,10 @@ import MyPosts from './MyPosts';
 import {addPostAC, updateNewPostTextAC} from '../../../redux/store';
 import {connect} from 'react-redux'; 
 
-let mapStateToProps = (state) =>{console.log(state)
+let mapStateToProps = (state) =>{
   return {
     postsData: state.contentReducer.postsData,
-
+    newPostText: state.contentReducer.newPostText
   }
 }
 
