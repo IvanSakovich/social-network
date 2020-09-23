@@ -18,7 +18,7 @@ const contentReducer = (state = initialState, action) => {
           likescount: 44
         };
         let stateCopy = {...state,
-          postsData: [...state.postsData, newPost],
+          postsData: [...state.postsData, newPost], //добавить массив
         newPostText: ''};
         return stateCopy;
       } else if (action.type === UPDATE_NEW_POST_TEXT){

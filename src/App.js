@@ -6,6 +6,7 @@ import Content from './components/Content/Content';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Footer from './components/Footer/Footer';
 import {Route} from 'react-router-dom';
+import UsersContainer from './components/Users/UsersContainer';
 
 const App = (props) =>{
   
@@ -26,6 +27,7 @@ const App = (props) =>{
         //store={props.state.dialogsPage}
         //dispatch={props.dispatch}
         />}/>
+        <Route path='/users' component={ () => <UsersContainer />}/>
       </div>
       <Footer />
     </div>
