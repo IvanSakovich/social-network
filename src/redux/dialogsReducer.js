@@ -7,7 +7,7 @@ let initialState = {
     {id: 2, name: 'Alex'},
     {id: 3, name: 'Yury'}
   ],
-messagesData : [
+  messagesData : [
     {id: 1, message: '1'},
     {id: 2, message: '2'},
     {id: 3, message: '3'}
@@ -16,12 +16,19 @@ messagesData : [
 }
 
 const dialogstReducer  = (state = initialState, action) => {
+  let stateCopy;
     if  (action.type === UPDATE_NEW_MESSAGE_BODY){ 
-        state.newMessageBody = action.body; 
+      stateCopy = {...state,
+        newMessageBody: action.body};
+        return stateCopy;
       } else if (action.type === SEND_MESSAGE){
         let body = state.newMessageBody;
-        state.newMessageBody = '';
-        state.messagesData.push({id: 7, message: body});
+        stateCopy = {
+          ...state,
+          newMessageBody: '',
+          messagesData : [...state.messagesData, {id: 7, message: body}]
+         };
+         return stateCopy;
     }
     return state;
 }

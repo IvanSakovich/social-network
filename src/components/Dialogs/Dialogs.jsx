@@ -2,30 +2,32 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Message from './Message/Message';
 import DI from './DI/DI';
-import {updateNewMessageBodyAC, sendMessageAC} from './../../redux/store';
+//import {updateNewMessageBodyAC, sendMessageAC} from './../../redux/store';
 
 const Dialogs = (props) => {
 
-let state = props.store.getState().dialogsReducer;
+//let state = props.store.getState().dialogsReducer;
 
-let dialogsElements = state.dialogsData
+let dialogsElements = props.dialogsReducer.dialogsData
 .map( d => <DI name={d.name} id={d.id}/> );
 
-let messagesElements = state.messagesData
+let messagesElements = props.dialogsReducer.messagesData
 .map( m => <Message id={m.id} message={m.message}/>)
 
-let newMessageBody = state.newMessageBody
+let newMessageBody = props.dialogsReducer.newMessageBody
 
 let newDialogMessage = React.createRef();
 
 let onSendMessageClick = () => {
-    props.store.dispatch(sendMessageAC());
+    //props.store.dispatch(sendMessageAC());
+    props.sendMessage();
+    //store.dispatch(sendMessageAC())
 }
 
 let onNewMessageChange = (e) => {
-    console.log(props)
     let text = e.target.value
-    props.store.dispatch(updateNewMessageBodyAC(text));
+    props.updateNewMessageBody(text); 
+    //props.store.dispatch(updateNewMessageBodyAC(text));
 }
 
     return (

@@ -7,7 +7,7 @@ let initialState = {
     {id: 2, message: 'bbb', likescount: '12'},
     {id: 3, message: 'ccc', likescount: '23'}
   ],
-  newPostText : ''
+  newPostText : 'a'
 }
 
 const contentReducer = (state = initialState, action) => {
@@ -17,10 +17,14 @@ const contentReducer = (state = initialState, action) => {
           message: state.newPostText, // postMessage
           likescount: 44
         };
-        state.postsData.push(newPost);
-        state.newPostText = '';
+        let stateCopy = {...state,
+          postsData: [...state.postsData, newPost], //добавить массив
+        newPostText: ''};
+        return stateCopy;
       } else if (action.type === UPDATE_NEW_POST_TEXT){
-        state.newPostText = action.newText;
+        let stateCopy = {...state,
+          newPostText: action.newText};
+        return stateCopy;
       } 
     return state;
 }

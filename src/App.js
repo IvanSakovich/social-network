@@ -3,9 +3,10 @@ import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Content from './components/Content/Content';
-import Dialogs from './components/Dialogs/Dialogs';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Footer from './components/Footer/Footer';
 import {Route} from 'react-router-dom';
+import UsersContainer from './components/Users/UsersContainer';
 
 const App = (props) =>{
   
@@ -18,14 +19,15 @@ const App = (props) =>{
         <Content 
         dispatch={props.store.dispatch}
         contentReducer={props.store.getState().contentReducer} 
-       //store={props.store}
+        //store={props.store}
         />}/>
         <Route path='/dialogs' component={ () => 
-        <Dialogs 
+        <DialogsContainer 
         store={props.store}
         //store={props.state.dialogsPage}
         //dispatch={props.dispatch}
         />}/>
+        <Route path='/users' component={ () => <UsersContainer />}/>
       </div>
       <Footer />
     </div>
